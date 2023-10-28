@@ -1,0 +1,33 @@
+{
+  "name": "fakester",
+  "version": "1.0.0",
+  "description": "Fake/Random Generated Person/Identity",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "sass src/static/scss:public/static/css --watch",
+    "build:sass": "sass src/static/scss:public/static/css",
+    "watch:eleventy": "eleventy --serve",
+    "build:eleventy": "ELEVENTY_ENV=development eleventy",
+    "start": "npm run watch:eleventy & npm run watch:sass",
+    "build": "npm run build:eleventy & npm run build:sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odevtools/fakester.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odevtools/fakester/issues"
+  },
+  "homepage": "https://github.com/odevtools/fakester#readme",
+  "dependencies": {
+    "@11ty/eleventy": "2.0.1",
+    "sass": "1.69.5"
+  },
+  "devDependencies": {
+    "eleventy-plugin-rollup": "^1.3.0",
+    "rollup": "^4.1.4"
+  }
+}
