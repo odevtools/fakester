@@ -5,11 +5,9 @@ module.exports = function (eleventyConfig) {
     files: './public/static/**/*.(css|js)',
   });
 
-  eleventyConfig.addWatchTarget('static/js/*');
+  eleventyConfig.addWatchTarget('src/static/js/*');
 
   eleventyConfig.addPlugin(rollupPlugin, {
-    importScriptsAbsoluteFrom: 'src',
-    useAbsoluteScriptPaths: true,
     rollupOptions: {
       output: {
         format: 'es',
