@@ -1,25 +1,25 @@
-const rollupPlugin = require('eleventy-plugin-rollup');
-
 module.exports = function (eleventyConfig) {
+  const dir = {
+      input: 'src',
+      output: 'public',
+      includes: '_includes',
+      layouts: '_layouts',
+    };
+
   eleventyConfig.setBrowserSyncConfig({
     files: './public/static/**/*.(css|js)',
   });
 
-  eleventyConfig.addWatchTarget('src/static/js/*');
+  const watchTargets = ['src/static/js/*'];
+  watchTargets.forEach(path => eleventyConfig.addWatchTarget(path));
 
-  eleventyConfig.addPlugin(rollupPlugin, {
-    rollupOptions: {
-      output: {
-        format: 'es',
-        dir: 'public/static/js',
-      },
-    },
-  });
+  eleventyConfig.addPlugin(require('./config/shortcodes/rollup.js'));
+
+  // find a way to share input and output dirs
+  // https://github.com/11ty/eleventy-img/issues/9
+  eleventyConfig.addPlugin(require('./config/shortcodes/image.js'));
 
   return {
-    dir: {
-      input: 'src',
-      output: 'public',
-    },
+    dir
   };
 };
